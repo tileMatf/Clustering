@@ -1,6 +1,7 @@
 import random
 import math
 import Point
+import Euclidean
 
 #Test if two point is equal
 def EqualPoints(Point1, Point2):
@@ -17,13 +18,6 @@ def PointNotInCenters(Point, Centers):
                 return False
     return True
 
-#Compute Euclidean distance between points Point1 and Point2
-def EuclideanDistance(Point1, Point2):
-	distance = 0
-	for i in range(0, len(Point1.coord)):
-		distance += pow((Point1.coord[i]-Point2.coord[i]), 2)
-	distance = round(math.sqrt(distance),2)
-	return distance
 
 #Print list of points in readable form	
 def PrintPoints(Points):	
@@ -79,24 +73,13 @@ def FarthestFirstTraversal(Points, k):
 		maxDistanceIndex = -1
 		for i in range(0, len(Centers)):
 			for j in range(0, len(Points)):
-				currentDistance = EuclideanDistance(Centers[i], Points[j])
+				currentDistance = Euclidean.EuclideanDistance(Centers[i], Points[j])
 				if PointNotInCenters(Points[j], Centers) and currentDistance > maxDistance:
 					maxDistance = currentDistance
 					maxDistanceIndex = j
 		Centers.append(Points[maxDistanceIndex])
+	print("Centers: ")
+	PrintPoints(Centers)
 	return Centers
 				
 
-#Example
-a = Point.Point([1,6])
-b = Point.Point([1,3])
-c = Point.Point([3,4])
-d = Point.Point([5,6])
-e = Point.Point([5,2])
-f = Point.Point([7,1])
-g = Point.Point([8,7])
-h = Point.Point([10,3])
-
-Points = [a, b, c, d,e,f,g,h]
-Centers = FarthestFirstTraversal(Points, 3)
-PrintPoints(Centers)
