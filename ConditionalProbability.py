@@ -47,4 +47,4 @@ Parameters=[0.6, 0.83]
 Data=[0.4, 0.9, 0.8, 0.3, 0.7]
 allShows=10
 ConditionalProbability(Parameters, Data, allShows)
-ConditionalProbabilityMatrix(Parameters, Data, allShows)
+EStep(Parameters, Data, allShows)
