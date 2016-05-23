@@ -55,8 +55,8 @@ def ClustersToCentersSoft(HiddenMatrix, Data):
   return Parameters
 
 		
-#soft version of kmeans clustering		
-def LloydSoft(Data, allShows):
+#ExpectationMaximization algorithm 
+def ExpectationMaximization(Data, allShows):
   
   Parameters=RandomParameters()
   #matrix[][]
@@ -81,4 +81,4 @@ def LloydSoft(Data, allShows):
 #example    
 Data=[0.4, 0.9, 0.8, 0.3, 0.7]
 allShows=10
-LloydSoft(Data, allShows)
+ExpectationMaximization(Data, allShows)
