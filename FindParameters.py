@@ -24,8 +24,10 @@ def FindParameters(HiddenVector, Data):
   a=a1/a2
   b=b1/b2
 
-  Parameters=[a, b]
-  print(Parameters[0:2])
+  Parameters=[[], []]
+  Parameters[1]=round(b, 2)
+  Parameters[0]=round(a, 2)
+  #print(Parameters[0:2])
   return Parameters
   
 #MStep algorithm, soft clustering
@@ -44,26 +46,32 @@ def MStep(HiddenMatrix, Data):
     b1+=HiddenMatrix[1][k]*Data[k]
     b2+=HiddenMatrix[1][k]*vector1[k]
     
+  if(a2==0):
+    a2=1
+  if(b2==0):
+    b2=1
+	
   a=a1/a2
   b=b1/b2
+  
   Parameters[0]=round(a, 2)
   Parameters[1]=round(b, 2)
- # print Parameters
+ # print (Parameters)
   return Parameters
 
 
 
 #example  
-#HiddenVector=[1, 0, 0, 1, 0]
-#Data=[0.4, 0.9, 0.8, 0.3, 0.7]
-#Parameters=[0.6, 0.83]
-#allShows=10
+HiddenVector=[1, 0, 0, 1, 0]
+Data=[0.4, 0.9, 0.8, 0.3, 0.7]
+Parameters=[0.6, 0.83]
+allShows=10
 
 
 #Parameters=FindParameters(HiddenVector, Data)  
-#print Parameters
+#print (Parameters)
 #HiddenMatrix=ConditionalProbability.EStep(Parameters, Data, allShows)
 #for i in HiddenMatrix:
-#  print i
+#  print (i)
 #Parameters=MStep(HiddenMatrix, Data)
-#print Parameters
+#print (Parameters)
