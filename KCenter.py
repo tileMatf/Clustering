@@ -35,6 +35,6 @@ g = Point.Point([8,7])
 h = Point.Point([10,3])
 
 Points = [a, b, c, d,e,f,g,h]
-Clusters = k_Center(Points, 2)
+Clusters = k_Center(Points, 3)
 
 Print.PrintClusters(Clusters)

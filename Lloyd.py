@@ -4,13 +4,17 @@ import copy
 import Print
 import NearestCenter
 import FarthestFirstTraversal
+import Input
+import KMeansInitializer
 
+#return index of Cluster in which was point 
 def PreviousCluster(point, Clusters):
 	for i in range(0, len(Clusters)):
 		if point in Clusters[i]:
 			return i
 	return -1
 
+#return k random points from Points
 def RandomCenters(Points, k):
 	Centers = []
 	Indices = []
@@ -24,6 +28,8 @@ def RandomCenters(Points, k):
 		k = k - 1
 	return Centers
 
+#Arrange points from Points in to cluster which
+#center is nearest to certain point
 def CentersToClusters(Points, Centers, Clusters):
 	change = False
 	
@@ -47,6 +53,9 @@ def CentersToClusters(Points, Centers, Clusters):
 		Clusters.append(newClusters[i])
 	return change
 
+#Compute new centers of clusters as center gravity point
+#i-th coordinate of center is avarage value of all i-th coordinates of points
+#from same cluster
 def ClustersToCenters(Centers, Clusters):
 	
 	spaceDim = len(Centers[0].coord)
@@ -65,10 +74,18 @@ def ClustersToCenters(Centers, Clusters):
 		#print(newCenterCoords)
 		Centers.append(Point.Point(newCenterCoords))
 		
+#Randomly selected k center from Points and iterate throw 2 steps:
+#Arrange points to nearest center, and than compute new center until
+#no more changes between clusters
 def Lloyd(Points, k):
-	
-	Centers = RandomCenters(Points, k)
-	print("First centers:");
+
+	answer = Input.EnterTypeOfChoiseOfFirstCenter();
+	if answer == "r":
+		Centers = RandomCenters(Points, k)
+	elif answer == "p":
+		Centers = KMeansInitializer.KMeansInitializer(Points, k);
+		
+	print("\nFirst centers:");
 	Print.PrintPoints(Centers)
 	Clusters = []
 	changeExists = True
@@ -77,7 +94,7 @@ def Lloyd(Points, k):
 		changeExists = CentersToClusters(Points, Centers, Clusters)
 		Print.PrintClusters(Clusters)
 		ClustersToCenters(Centers, Clusters)
-		print("new Centers:")
+		print("\nnew Centers:")
 		Print.PrintPoints(Centers)
 	return Clusters
 	
@@ -92,8 +109,5 @@ g = Point.Point([8,7])
 h = Point.Point([10,3])
 	
 Points = [a,b,c,d,e,f,g,h]
-#Centers = [a, d, e ,g]
-#Clusters = [[a,b], [c,d], [e,f], [g,h]]
-#Print.PrintClusters(Clusters)
 
-Clusters = Lloyd(Points, 4)
+Clusters = Lloyd(Points, 3)

@@ -1,6 +1,4 @@
 import Point 
-import FarthestFirstTraversal
-import NearestCenter
 import Euclidean
 import copy
 import math
@@ -13,8 +11,8 @@ import Input
 def PointChoiceProbability(Points, Centers):
 	PointsProbability = []
 	for i in range(0, len(Points)):
-		nearestCenter = NearestCenter.NearestCenter(Points[i], Centers)
-		PointsProbability.append(math.pow(nearestCenter[1], 2))
+		distance = Euclidean.AvarageDistance(Points[i], Centers)
+		PointsProbability.append(math.pow(distance, 2))
 	return PointsProbability
 
 	
@@ -35,10 +33,11 @@ def KMeansInitializer(Points, k):
 		Centers.append(Points_copy[newPointIndex])
 		del Points_copy[newPointIndex]
 		
-	print("\nCenters:")
-	Print.PrintPoints(Centers)
+	#print("\nCenters:")
+	#Print.PrintPoints(Centers)
 	return Centers
 	
+"""
 a = Point.Point([1,6])
 b = Point.Point([1,3])
 c = Point.Point([3,4])
@@ -49,6 +48,6 @@ g = Point.Point([8,7])
 h = Point.Point([10,3])
 
 Points = [a, b, c, d, e, f, g, h]
-Centers = [a]
-KMeansInitializer(Points, 2)
-
+Centers = KMeansInitializer(Points, 3)
+Print.PrintPoints(Centers)
+"""

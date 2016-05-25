@@ -24,6 +24,8 @@ def PointNotInCenters(Point, Centers):
 #Return k centers from Points
 #In every iteration select point from Points which maximizing
 #distance between current centers and other points from Points
+#Point with max distance is calculating as avarage distance between 
+#point and every center that is selected till now 
 def FarthestFirstTraversal(Points, k):
 	
 	firstPointIndex = Input.EnterFirstCenter(Points)
@@ -34,18 +36,19 @@ def FarthestFirstTraversal(Points, k):
 		currentDistance = 0
 		maxDistance = 0
 		maxDistanceIndex = -1
-		for i in range(0, len(Centers)):
-			for j in range(0, len(Points)):
-				currentDistance = Euclidean.EuclideanDistance(Centers[i], Points[j])
-				if PointNotInCenters(Points[j], Centers) and currentDistance > maxDistance:
-					maxDistance = currentDistance
-					maxDistanceIndex = j
+		for j in range(0, len(Points)):
+			for i in range(0, len(Centers)):
+				currentDistance += Euclidean.EuclideanDistance(Centers[i], Points[j])
+			currentDistance = currentDistance / len(Centers);
+			if PointNotInCenters(Points[j], Centers) and currentDistance > maxDistance:
+				maxDistance = currentDistance
+				maxDistanceIndex = j
 		Centers.append(Points[maxDistanceIndex])
 	print("Centers: ")
 	Print.PrintPoints(Centers)
 	return Centers
 
-"""	
+"""
 a = Point.Point([1,6])
 b = Point.Point([1,3])
 c = Point.Point([3,4])

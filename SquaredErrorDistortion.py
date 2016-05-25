@@ -10,7 +10,7 @@ def Distortion(Points, Centers):
 		sum += pow(nearestCenter[1], 2)
 	return sum/n	
 
-""" Test	
+	
 A = Point.Point([1,6])
 B = Point.Point([5,6])
 C = Point.Point([3,4])
@@ -29,4 +29,3 @@ H = Point.Point([9, 5])
 Centers = [I, EF, H]
 
 print (Distortion(Data, Centers))
-"""
