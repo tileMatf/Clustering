@@ -10,10 +10,10 @@ def HierarhicalClustering(matrixD, points):
  # print Clusters
 
  
-  print "Clusters:"
+  print ("Clusters:")
   for i in range (0, n):
     Clusters[i].append(points[i])
-    print i, ":", Clusters[i]
+    print (i, ":", Clusters[i])
    
   
   while(len(Clusters)>1):
@@ -29,17 +29,19 @@ def HierarhicalClustering(matrixD, points):
           ind1=i
           ind2=j
       
-    print "merge",  ind1, "and", ind2, "minDistance =", minDist  
+    print ("merge",  ind1, "and", ind2, "minDistance =", minDist)
     for i in range(0, len(Clusters[ind2])):
       Clusters[ind1].append(Clusters[ind2][i])
     del Clusters[ind2]  
     n=n-1
     
-    print "CLusters:"
+    print ("CLusters:")
     for i in range (0, n):
-      print i, ":", Clusters[i]  
+      print (i, ":", Clusters[i])
   
 
+w, h = 5, 3
+matrix = [[0 for x in range(w)] for y in range(h)] 
 
 a = Point.Point([1,2])
 b = Point.Point([6,8])
