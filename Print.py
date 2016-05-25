@@ -15,3 +15,4 @@ def PrintClusters(Clusters):
 	for i in range(0, len(Clusters)):
 		print(str(i+1) + ". cluster")
 		PrintPoints(Clusters[i])
+		print("--------------------------------")

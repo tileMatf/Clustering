@@ -1,13 +1,9 @@
 import Point
+import Print
 import FarthestFirstTraversal
 import SquaredErrorDistortion
 import NearestCenter
 
-#Print clusters in readable form
-def PrintClusters(Clusters):
-	for i in range(0, len(Clusters)):
-		print(str(i+1) + ". cluster")
-		FarthestFirstTraversal.PrintPoints(Clusters[i])	
 
 #Implement k centers algorithm - select k centers with 
 #Farthest first traversal heuristic and arrange point in
@@ -23,9 +19,9 @@ def k_Center(Points, k):
 
 	for i in range(0, n):
 		nearestCenter = NearestCenter.NearestCenter(Points[i], Centers)
-		for k in range(0, len(Centers)):
-			if FarthestFirstTraversal.EqualPoints(nearestCenter[0], Centers[k]):
-				Clusters[k].append(Points[i])
+		for j in range(0, len(Centers)):
+			if FarthestFirstTraversal.EqualPoints(nearestCenter[0], Centers[j]):
+				Clusters[j].append(Points[i])
 	return Clusters
 
 #Example
@@ -41,4 +37,4 @@ h = Point.Point([10,3])
 Points = [a, b, c, d,e,f,g,h]
 Clusters = k_Center(Points, 2)
 
-PrintClusters(Clusters)
+Print.PrintClusters(Clusters)
