@@ -35,14 +35,14 @@ def CentersToClustersSoft(Parameters, Data, HiddenMatrix, allShows):
       
               
   #new HiddenMatrix            
-  del HiddenMatrix
+  #del HiddenMatrix
   for j in (0, len(Parameters)-1): #0,1
     for i in range (0,len(Data)): #0-4
       HiddenMatrix[j][i]=matrix[j][i]
   
   #print Matrix
   for i in HiddenMatrix:
-    print i 
+    print (i) 
   
   return change  
 
@@ -54,8 +54,10 @@ def ClustersToCentersSoft(HiddenMatrix, Data):
  # print ("parametri su ", Parameters)
   return Parameters
 
+
+
 		
-#ExpectationMaximization algorithm 
+#Expectation Maximization algorithm		
 def ExpectationMaximization(Data, allShows):
   
   Parameters=RandomParameters()
@@ -64,7 +66,7 @@ def ExpectationMaximization(Data, allShows):
   matrix = [[0 for x in range(w)] for y in range(h)]
   changeExist=1
   for i in matrix:
-      print i
+      print (i)
   
   while(changeExist):
     changeExist=CentersToClustersSoft(Parameters, Data, matrix, allShows) 
@@ -78,7 +80,7 @@ def ExpectationMaximization(Data, allShows):
     
   return matrix
     
-#example    
+    
 Data=[0.4, 0.9, 0.8, 0.3, 0.7]
 allShows=10
 ExpectationMaximization(Data, allShows)
