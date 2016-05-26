@@ -19,7 +19,7 @@ def RandomParameters(k, m):
 	while (len(Parameters) < k):
 		newParameter = Point.Point([])
 		for i in range(0, m):
-			random.seed(time.time()+k%(i+1))
+			random.seed(time.time()+(k%(i+1)))
 			randCoord = round(random.randint(0,9) + random.random(), 2);
 			newParameter.coord.append(randCoord)
 		if FarthestFirstTraversal.PointNotInCenters(newParameter, Parameters):
