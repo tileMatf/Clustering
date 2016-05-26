@@ -1,8 +1,8 @@
 import Point 
 import Euclidean 
 
-#Return list of 2 elements - nearest center of point Point from Centers 
-#and Euclidean distance between them
+#Return list of 2 elements - nearest center of point Point from Centers, 
+#Euclidean distance between them and index of nearest center
 def NearestCenter(Point, Centers):
 	minDistance = Euclidean.EuclideanDistance(Point, Centers[0])
 	minDistanceIndex = 0
@@ -11,6 +11,6 @@ def NearestCenter(Point, Centers):
 		if currentDistance < minDistance:
 			minDistance = currentDistance
 			minDistanceIndex = i
-	return [Centers[minDistanceIndex], minDistance]
+	return [Centers[minDistanceIndex], minDistance, minDistanceIndex]
 
 

@@ -71,14 +71,16 @@ def ClustersToCenters(Centers, Clusters):
 			for j in range(0, len(Clusters[i])):
 				sum += Clusters[i][j].coord[k]
 			newCenterCoords.append(sum/len(Clusters[i]))
+			
 		#print(newCenterCoords)
 		Centers.append(Point.Point(newCenterCoords))
 		
 #Randomly selected k center from Points and iterate throw 2 steps:
 #Arrange points to nearest center, and than compute new center until
 #no more changes between clusters
-def Lloyd(Points, k):
+def Lloyd(Points):
 
+	k = Input.EnterNumberOfCluster(Points);
 	answer = Input.EnterTypeOfChoiseOfFirstCenter();
 	if answer == "r":
 		Centers = RandomCenters(Points, k)
@@ -110,4 +112,4 @@ h = Point.Point([10,3])
 	
 Points = [a,b,c,d,e,f,g,h]
 
-Clusters = Lloyd(Points, 3)
+Clusters = Lloyd(Points)

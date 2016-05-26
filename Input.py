@@ -39,4 +39,21 @@ def EnterTypeOfChoiseOfFirstCenter():
 					"probability of choice some point be proportional with distance? (type r or p)")
 	return answer
 	
+def	EnterNumberOfCluster(Points):
 	
+	num = -1;
+	notInt = False
+	
+	while(num < 0 or num >= len(Points) or notInt):
+		try:
+			num = int(input("Enter number of cluster you want: "))
+		except ValueError:
+			print("Value is not a integer, try again.")
+			notInt = True
+			continue
+		if (num < 0 or num >= len(Points)):
+			print("Value is out of range, try again.");
+		if isinstance(num, int):
+			notInt = False
+		
+	return num	

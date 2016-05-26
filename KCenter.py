@@ -8,8 +8,9 @@ import NearestCenter
 #Implement k centers algorithm - select k centers with 
 #Farthest first traversal heuristic and arrange point in
 #cluster whose center is nearest 
-def k_Center(Points, k):
+def k_Center(Points):
 	
+	k = Input.EnterNumberOfCluster(Points);
 	Centers = FarthestFirstTraversal.FarthestFirstTraversal(Points, k)
 	n = len(Points)
 

@@ -15,9 +15,8 @@ def EqualPoints(Point1, Point2):
 #Test if point Point is in Centers
 def PointNotInCenters(Point, Centers):
     for i in range(0, len(Centers)):
-        for j in range(0, len(Centers[i].coord)):
-            if EqualPoints(Point, Centers[i]) == True:
-                return False
+        if EqualPoints(Point, Centers[i]) == True:
+            return False
     return True
 
 		
